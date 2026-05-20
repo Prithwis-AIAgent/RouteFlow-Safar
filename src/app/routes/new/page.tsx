@@ -192,101 +192,104 @@ export default function NewRoutePage() {
   };
 
   return (
-    <div className="page-container">
-      <div className="page-header">
-        <h1 className="page-title">New Route</h1>
-        <p className="text-sm text-muted mt-1">Plan your delivery stops</p>
-      </div>
-
-      {/* Route details */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 mb-4 border border-gray-200 dark:border-slate-700 shadow-sm space-y-4">
-        <div>
-          <label htmlFor="route-name" className="input-label">
-            Route Name <span className="text-danger">*</span>
-          </label>
-          <input
-            id="route-name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder={routeNamePlaceholder}
-            className="input-field"
-            maxLength={80}
-          />
+    <div className="flex flex-col h-[calc(100vh-64px)] overflow-hidden md:max-w-2xl md:mx-auto md:px-4 mt-0 md:mt-16">
+      {/* ── Scrollable Workspace ── */}
+      <div className="flex-1 overflow-y-auto px-4 md:px-0 pt-6 md:pt-6 pb-4">
+        <div className="page-header">
+          <h1 className="page-title">New Route</h1>
+          <p className="text-sm text-muted mt-1">Plan your delivery stops</p>
         </div>
-        <div>
-          <label htmlFor="route-description" className="input-label">
-            Description <span className="text-muted font-normal">(optional)</span>
-          </label>
-          <input
-            id="route-description"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="e.g. North zone — 14 packages"
-            className="input-field"
-            maxLength={200}
-          />
-        </div>
-      </div>
 
-      {/* Stops */}
-      <div className="mb-4">
-        <div className="flex items-center justify-between mb-3">
-          <p className="section-label">Stops ({stops.length}/{MAX_STOPS})</p>
-          <button
-            onClick={handleUseMyLocation}
-            disabled={locating}
-            className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors disabled:opacity-50"
-            id="use-location-btn"
-          >
-            {locating ? (
-              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-              </svg>
-            ) : (
+        {/* Route details */}
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 mb-4 border border-gray-200 dark:border-slate-700 shadow-sm space-y-4">
+          <div>
+            <label htmlFor="route-name" className="input-label">
+              Route Name <span className="text-danger">*</span>
+            </label>
+            <input
+              id="route-name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={routeNamePlaceholder}
+              className="input-field"
+              maxLength={80}
+            />
+          </div>
+          <div>
+            <label htmlFor="route-description" className="input-label">
+              Description <span className="text-muted font-normal">(optional)</span>
+            </label>
+            <input
+              id="route-description"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="e.g. North zone — 14 packages"
+              className="input-field"
+              maxLength={200}
+            />
+          </div>
+        </div>
+
+        {/* Stops */}
+        <div className="mb-4">
+          <div className="flex items-center justify-between mb-3">
+            <p className="section-label">Stops ({stops.length}/{MAX_STOPS})</p>
+            <button
+              onClick={handleUseMyLocation}
+              disabled={locating}
+              className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors disabled:opacity-50"
+              id="use-location-btn"
+            >
+              {locating ? (
+                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              )}
+              {locating ? 'Locating…' : 'Use my location'}
+            </button>
+          </div>
+
+          <StopList
+            stops={stops}
+            onStopsChange={setStops}
+            onUpdate={handleUpdateStop}
+            onDelete={handleDeleteStop}
+            onAddressSelect={handleAddressSelect}
+            labelPlaceholder={stopLabelPlaceholder}
+          />
+
+          {stops.length < MAX_STOPS && (
+            <button
+              onClick={handleAddStop}
+              className="mt-3 w-full flex items-center justify-center gap-2 h-12 rounded-xl border-2 border-dashed border-gray-200 text-gray-500 font-medium text-sm hover:border-primary hover:text-primary hover:bg-blue-50 transition-all"
+              id="add-stop-btn"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
-            )}
-            {locating ? 'Locating…' : 'Use my location'}
-          </button>
-        </div>
+              Add Stop
+            </button>
+          )}
 
-        <StopList
-          stops={stops}
-          onStopsChange={setStops}
-          onUpdate={handleUpdateStop}
-          onDelete={handleDeleteStop}
-          onAddressSelect={handleAddressSelect}
-          labelPlaceholder={stopLabelPlaceholder}
-        />
-
-        {stops.length < MAX_STOPS && (
-          <button
-            onClick={handleAddStop}
-            className="mt-3 w-full flex items-center justify-center gap-2 h-12 rounded-xl border-2 border-dashed border-gray-200 text-gray-500 font-medium text-sm hover:border-primary hover:text-primary hover:bg-blue-50 transition-all"
-            id="add-stop-btn"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          <p className="mt-3 text-xs text-gray-500 flex items-center gap-1.5 justify-center md:justify-start">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3.5 h-3.5 text-gray-400">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.084-1.083l.352-.176a.75.75 0 00-1.084 1.083l.041.02zM12 18.75a.75.75 0 00.75-.75V12a.75.75 0 00-1.5 0v6a.75.75 0 00.75.75zM12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25z" />
             </svg>
-            Add Stop
-          </button>
-        )}
-
-        <p className="mt-3 text-xs text-gray-500 flex items-center gap-1.5 justify-center md:justify-start">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3.5 h-3.5 text-gray-400">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.084-1.083l.352-.176a.75.75 0 00-1.084 1.083l.041.02zM12 18.75a.75.75 0 00.75-.75V12a.75.75 0 00-1.5 0v6a.75.75 0 00.75.75zM12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25z" />
-          </svg>
-          Stop 1 is your starting point. Stops are launched in order.
-        </p>
+            Stop 1 is your starting point. Stops are launched in order.
+          </p>
+        </div>
       </div>
 
-      {/* Actions */}
-      <div className="flex flex-col gap-3 sticky bottom-20 md:bottom-6 pt-3">
+      {/* ── Static Actions Footer ── */}
+      <div className="bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 px-4 py-3 shadow-[0_-4px_12px_rgba(0,0,0,0.03)] w-full flex flex-col gap-3 mb-14 md:mb-0">
         <LaunchButton stops={stops} className="w-full" />
         <button
           onClick={handleSave}
