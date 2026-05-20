@@ -1,36 +1,74 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# RouteFlow Git Exclusions
 
-# dependencies
-/node_modules
-/.pnp
+# Dependencies
+node_modules/
+jspm_packages/
+.pnp
 .pnp.js
 .yarn/install-state.gz
 
-# testing
-/coverage
+# Build and Compilation Outputs
+.next/
+out/
+build/
+dist/
+.docusaurus/
+.cache/
+*.tsbuildinfo
+next-env.d.ts
 
-# next.js
-/.next/
-/out/
+# Vercel Deployment Metadata
+.vercel/
 
-# production
-/build
+# Testing and Coverage
+coverage/
+.nyc_output/
 
-# misc
-.DS_Store
+# Environment Variables & Secrets
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+.env*.local
 *.pem
+*.key
+*.cert
+*.pfx
+*.p12
+*.jks
 
-# debug
+# IDEs & Editor Configuration Directories
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+
+# System Files & Logs
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Python & Virtual Environments (if applicable)
+venv/
+.venv/
+env/
+.env/
+ENV/
+pycache/
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
