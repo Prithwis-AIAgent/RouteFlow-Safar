@@ -1,6 +1,6 @@
 {
-  "name": "RouteFlow",
-  "short_name": "RouteFlow",
+  "name": "Safar",
+  "short_name": "Safar",
   "description": "Delivery route workflow assistant — plan and launch multi-stop routes",
   "start_url": "/",
   "display": "standalone",

@@ -1,21 +1,21 @@
-# 📍 RouteFlow
+# 📍 Safar
 
 <p align="center">
-  <img src="./public/logo.png" alt="RouteFlow Logo" width="600" />
+  <img src="./public/logo.png" alt="Safar Logo" width="600" />
 </p>
 
 ### **Optimize Your Routes, Save Time, and Maximize Your Earnings.**
-RouteFlow is the ultimate SaaS routing solution built for delivery drivers, courier agents, e-commerce workers, and modern travellers. Turn chaos into optimized paths, reduce fuel costs, and navigate your day with confidence.
+Safar is the ultimate SaaS routing solution built for delivery drivers, courier agents, e-commerce workers, and modern travellers. Turn chaos into optimized paths, reduce fuel costs, and navigate your day with confidence.
 
-🔗 **Try RouteFlow Live:** [routeflow-app.vercel.app](https://routeflow-app.vercel.app) 
+🔗 **Try Safar Live:** [Safar-app.vercel.app](https://Safar-app.vercel.app) 
 
 ---
 
-## 🚀 Why RouteFlow?
+## 🚀 Why Safar?
 
-Planning multi-stop delivery routes manually is slow, frustrating, and costs you money in fuel and lost time. RouteFlow automates route organization and lets you instantly launch your customized paths directly into Google Maps for turn-by-turn navigation.
+Planning multi-stop delivery routes manually is slow, frustrating, and costs you money in fuel and lost time. Safar automates route organization and lets you instantly launch your customized paths directly into Google Maps for turn-by-turn navigation.
 
-* **Save up to 30% on Fuel & Time:** Let RouteFlow structure your day.
+* **Save up to 30% on Fuel & Time:** Let Safar structure your day.
 * **Launch Instantly:** Zero copy-pasting address lists. One click triggers complete navigation.
 * **Designed for the Road:** Mobile-optimized, ultra-responsive layout with a premium battery-saving Dark Slate theme.
 
@@ -46,7 +46,7 @@ Built as a Progressive Web App (PWA). If you briefly lose signal or drive throug
 
 ## ⚡ How It Works
 
-Getting started with RouteFlow takes less than a minute:
+Getting started with Safar takes less than a minute:
 
 1. **Sign Up / Guest Mode:** Create a secure account to sync your routes across devices, or start planning instantly in guest mode.
 2. **Add Your Destinations:** Simply type address names or coordinates for your starting point and stops.
@@ -57,11 +57,11 @@ Getting started with RouteFlow takes less than a minute:
 
 ## 🔒 Proprietary Software & Terms
 
-**RouteFlow is a proprietary Software-as-a-Service (SaaS) product.** 
+**Safar is a proprietary Software-as-a-Service (SaaS) product.** 
 * All rights reserved. 
 * Downloading, copying, self-hosting, or distributing the source code of this application is strictly prohibited under intellectual property laws.
 * For enterprise partnerships, custom API integrations, or licensing inquiries, please contact the product team.
 
 ---
 
-*Copyright © 2026 RouteFlow. All rights reserved.*
+*Copyright © 2026 Safar. All rights reserved.*

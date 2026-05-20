@@ -5,16 +5,16 @@ import OfflineBanner from '@/components/OfflineBanner';
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
-  title: 'RouteFlow — Delivery Route Planner',
+  title: 'Safar — Delivery Route Planner',
   description: 'Plan, save, and launch multi-stop delivery routes directly in Google Maps. Designed for delivery workers on the go.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'RouteFlow',
+    title: 'Safar',
   },
   openGraph: {
-    title: 'RouteFlow — Delivery Route Planner',
+    title: 'Safar — Delivery Route Planner',
     description: 'Smart route planning for delivery professionals',
     type: 'website',
   },

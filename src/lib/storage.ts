@@ -1,6 +1,6 @@
 import { Route } from '@/types';
 
-const ROUTES_KEY = 'routeflow_routes';
+const ROUTES_KEY = 'safar_routes';
 
 export function getLocalRoutes(): Route[] {
   if (typeof window === 'undefined') return [];

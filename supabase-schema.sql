@@ -1,5 +1,5 @@
 -- =============================================
--- RouteFlow Database Schema for Supabase
+-- Safar Database Schema for Supabase
 -- Run this in the Supabase SQL Editor
 -- =============================================
 
