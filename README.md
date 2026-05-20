@@ -1,85 +1,63 @@
 # 📍 RouteFlow
 
-RouteFlow is a premium, multi-stop route planner and delivery optimization dashboard designed for on-the-go professionals. Whether you are a food delivery driver, courier agent, or independent traveller, RouteFlow helps you organize, manage, and instantly launch multi-destination routes directly into Google Maps with ease.
+### **Optimize Your Routes, Save Time, and Maximize Your Earnings.**
+RouteFlow is the ultimate SaaS routing solution built for delivery drivers, courier agents, e-commerce workers, and modern travellers. Turn chaos into optimized paths, reduce fuel costs, and navigate your day with confidence.
+
+🔗 **Try RouteFlow Live:** [routeflow-app.vercel.app](https://routeflow-app.vercel.app) *(or your custom domain)*
 
 ---
 
-## 🚀 Tech Stack
+## 🚀 Why RouteFlow?
 
-| Component | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend Framework** | [Next.js 14](https://nextjs.org/) (App Router) | Modern React framework with Server Actions and SSR capabilities. |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) & CSS Variables | Responsive layout styled with custom slate variables and dark mode toggles. |
-| **Backend & Auth** | [Supabase](https://supabase.com/) | Real-time PostgreSQL database, secure JWT authentication, and user profiles. |
-| **Maps API** | [Google Maps Platform](https://developers.google.com/maps) | Autocomplete Address Search, Places API, and Geocoding API. |
-| **Hosting & CI/CD** | [Vercel](https://vercel.com/) | Cloud platform for serverless and edge Next.js hosting. |
+Planning multi-stop delivery routes manually is slow, frustrating, and costs you money in fuel and lost time. RouteFlow automates route organization and lets you instantly launch your customized paths directly into Google Maps for turn-by-turn navigation.
+
+* **Save up to 30% on Fuel & Time:** Let RouteFlow structure your day.
+* **Launch Instantly:** Zero copy-pasting address lists. One click triggers complete navigation.
+* **Designed for the Road:** Mobile-optimized, ultra-responsive layout with a premium battery-saving Dark Slate theme.
 
 ---
 
-## ✨ Features
+## ✨ Premium Features
 
-* **Instant Address Autocomplete:** Integrated with Google Places API to search and select destination stop points.
-* **Intelligent Starting Point:** Agarpara default coordinates configured to pre-populate primary stops for rapid route planning.
-* **Premium Dark Mode:** Sleek Slate-900 battery-friendly dark theme with FOUC prevention and local storage state persistence.
-* **Multi-Stop Management:** Drag-and-drop stop sorting, dynamic additions, and deletions (up to 25 stops per route).
-* **Native Maps Hand-off:** One-click launch to open the complete multi-stop route directions automatically inside Google Maps.
-* **Secure Session Syncing:** Connect through email auth or explore as a guest with local storage fallback state management.
+### 🔍 Smart Address Autocomplete
+Powered by industry-leading Google Places API. Search and select any address instantly with automatic geocoding.
 
----
+### 🌓 Premium Dark Mode
+Switch between high-contrast light and dark themes. The premium Dark Slate theme is specifically optimized for delivery dashboards, reducing eye strain and saving battery life during long shifts.
 
-## 🛠️ Local Setup Instructions
+### 📍 Intelligent Starting Points
+Configure default locations (such as home base, warehouse, or regional hubs like Agarpara) to instantly begin crafting new routes without repetitive typing.
 
-Follow these steps to run RouteFlow on your local development machine:
+### 🧑‍💼 Tailored Experience for Every Role
+Get custom workflows whether you are:
+* **🛵 Food Delivery Workers** (Zomato, Swiggy, UberEats, etc.)
+* **📦 Parcel & Courier Agents** (Amazon, DHL, FedEx, etc.)
+* **🏭 E-commerce Operations Employees**
+* **✈️ Travellers & Tour Planners**
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Prithwis-AIAgent/RouteFlow.git
-cd RouteFlow/routeflow-app
-```
-
-### 2. Install Project Dependencies
-Make sure you have Node.js installed, then run:
-```bash
-npm install
-```
-
-### 3. Configure Local Environment Variables
-Duplicate the environment template file:
-```bash
-cp .env.example .env.local
-```
-Open `.env.local` and enter your valid Supabase and Google Maps API keys:
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-```
-
-### 4. Run the Development Server
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
+### 📱 Full Offline Capabilities
+Built as a Progressive Web App (PWA). If you briefly lose signal or drive through low-connectivity areas, your active routes remain fully loaded and responsive.
 
 ---
 
-## ☁️ Vercel Deployment Guide
+## ⚡ How It Works
 
-To deploy RouteFlow directly on Vercel:
+Getting started with RouteFlow takes less than a minute:
 
-1. **Connect Repository:** Log in to [Vercel](https://vercel.com), click **Add New > Project**, and import this GitHub repository.
-2. **Configure Settings:**
-   * **Framework Preset:** Next.js
-   * **Root Directory:** `routeflow-app`
-3. **Set Environment Variables:** In the project setup wizard, expand the **Environment Variables** section and insert the following keys matching your configuration:
-   * `NEXT_PUBLIC_SUPABASE_URL`
-   * `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   * `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`
-4. **Deploy:** Click **Deploy**. Vercel will build the Next.js production bundle and supply a live preview URL.
+1. **Sign Up / Guest Mode:** Create a secure account to sync your routes across devices, or start planning instantly in guest mode.
+2. **Add Your Destinations:** Simply type address names or coordinates for your starting point and stops.
+3. **Organize & Optimize:** Arrange stops in the optimal order using intuitive drag-and-drop lists.
+4. **Launch & Drive:** Tap **Launch in Maps** to open the entire route instantly in your Google Maps app.
 
 ---
 
-## 🔒 Security Best Practices
+## 🔒 Proprietary Software & Terms
 
-* **Zero Hardcoded Credentials:** All credentials, keys, and endpoint targets are requested dynamically from the runtime environment.
-* **Air-tight Exclusions:** The `.gitignore` is optimized to block uploads of `.env.local`, `.vercel`, `.next`, and logs to public workspaces.
+**RouteFlow is a proprietary Software-as-a-Service (SaaS) product.** 
+* All rights reserved. 
+* Downloading, copying, self-hosting, or distributing the source code of this application is strictly prohibited under intellectual property laws.
+* For enterprise partnerships, custom API integrations, or licensing inquiries, please contact the product team.
+
+---
+
+*Copyright © 2026 RouteFlow. All rights reserved.*
