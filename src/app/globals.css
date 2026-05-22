@@ -283,4 +283,9 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .navbar-logo {
+    filter: none !important;
+    box-shadow: none !important;
+  }
 }

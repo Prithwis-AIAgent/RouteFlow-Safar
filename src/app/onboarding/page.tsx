@@ -140,7 +140,7 @@ export default function OnboardingPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/20 backdrop-blur mb-4 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Safar Logo" className="w-full h-full object-cover" />
+            <img src="/logo.png" alt="Safar Logo" className="w-full h-full object-cover navbar-logo" />
           </div>
           {/* Step dots */}
           <div className="flex items-center justify-center gap-2 mb-3">

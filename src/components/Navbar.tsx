@@ -95,7 +95,7 @@ export default function Navbar() {
       <nav className="hidden md:flex fixed top-0 left-0 right-0 z-50 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 items-center px-6 shadow-sm">
         <Link href="/" className="flex items-center gap-2 mr-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Safar Logo" className="w-8 h-8 rounded-lg object-cover" />
+          <img src="/logo.png" alt="Safar Logo" className="w-8 h-8 rounded-lg object-cover navbar-logo" />
           <span className="font-bold text-xl text-gray-900 dark:text-slate-100">Safar</span>
         </Link>
         <div className="flex items-center gap-1 flex-1">
