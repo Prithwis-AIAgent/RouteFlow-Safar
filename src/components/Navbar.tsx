@@ -47,13 +47,17 @@ export default function Navbar() {
   const pathname = usePathname();
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [showInstallBanner, setShowInstallBanner] = useState(true);
+  const [showInstallBanner, setShowInstallBanner] = useState(false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setShowInstallBanner(true);
+      
+      const isDismissed = localStorage.getItem('safar_pwa_dismissed') === 'true';
+      if (!isDismissed) {
+        setShowInstallBanner(true);
+      }
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -74,6 +78,7 @@ export default function Navbar() {
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
       setDeferredPrompt(null);
+      localStorage.setItem('safar_pwa_dismissed', 'true');
     }
   };
 
@@ -170,7 +175,10 @@ export default function Navbar() {
               Install
             </button>
             <button
-              onClick={() => setShowInstallBanner(false)}
+              onClick={() => {
+                setShowInstallBanner(false);
+                localStorage.setItem('safar_pwa_dismissed', 'true');
+              }}
               className="text-gray-400 hover:text-gray-600 dark:hover:text-slate-200 p-1"
               aria-label="Dismiss install banner"
             >
