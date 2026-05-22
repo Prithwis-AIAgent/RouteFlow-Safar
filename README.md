@@ -1,8 +1,6 @@
 # 📍 Safar
 
-<p align="center">
-  <img src="./public/logo.png" alt="Safar Logo" width="600" />
-</p>
+![Safar Banner](./public/banner.png)
 
 ### **Optimize Your Routes, Save Time, and Maximize Your Earnings.**
 Safar is the ultimate SaaS routing solution built for delivery drivers, courier agents, e-commerce workers, and modern travellers. Turn chaos into optimized paths, reduce fuel costs, and navigate your day with confidence.

@@ -94,11 +94,8 @@ export default function Navbar() {
       {/* Desktop top nav */}
       <nav className="hidden md:flex fixed top-0 left-0 right-0 z-50 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 items-center px-6 shadow-sm">
         <Link href="/" className="flex items-center gap-2 mr-10">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-            </svg>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="Safar Logo" className="w-8 h-8 rounded-lg object-cover" />
           <span className="font-bold text-xl text-gray-900 dark:text-slate-100">Safar</span>
         </Link>
         <div className="flex items-center gap-1 flex-1">
@@ -123,7 +120,7 @@ export default function Navbar() {
           {deferredPrompt && (
             <button
               onClick={handleInstallClick}
-              className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white hover:bg-primary/90 transition-all duration-200 shadow-sm border border-primary-light active:scale-95 mr-2 animate-pulse"
+              className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white hover:bg-primary/90 transition-all duration-200 shadow-sm border border-primary-light active:scale-95 mr-2"
               id="desktop-install-btn"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
