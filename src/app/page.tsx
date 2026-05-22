@@ -17,17 +17,21 @@ export default function HomePage() {
   const [routes, setRoutes] = useState<Route[]>([]);
   const [loading, setLoading] = useState(true);
   const [isGuest, setIsGuest] = useState(false);
+  const [syncing, setSyncing] = useState(false);
   const { profile, role, loading: profileLoading } = useProfile();
 
-  const loadRoutes = useCallback(async () => {
-    setLoading(true);
+  const loadRoutes = useCallback(async (isBackground = false) => {
+    if (!isBackground) {
+      setLoading(true);
+    } else {
+      setSyncing(true);
+    }
     try {
       const { data: { user } } = await supabase.auth.getUser();
       setIsGuest(!user);
 
       if (!user) {
         setRoutes(getLocalRoutes());
-        setLoading(false);
         return;
       }
 
@@ -39,7 +43,6 @@ export default function HomePage() {
 
       if (!navigator.onLine) {
         setRoutes(getLocalRoutes());
-        setLoading(false);
         return;
       }
 
@@ -58,15 +61,24 @@ export default function HomePage() {
 
       setRoutes(routesWithSortedStops);
       routesWithSortedStops.forEach((r) => saveLocalRoute(r));
-    } catch {
-      setRoutes(getLocalRoutes());
+    } catch (err) {
+      console.error('Error loading routes:', err);
+      // Fallback only if we don't have routes loaded already
+      if (!isBackground) {
+        setRoutes(getLocalRoutes());
+      }
     } finally {
       setLoading(false);
+      setSyncing(false);
     }
   }, [profileLoading, profile, router]);
 
+  // Read local routes immediately on mount, then trigger background fetch
   useEffect(() => {
-    loadRoutes();
+    const local = getLocalRoutes();
+    setRoutes(local);
+    setLoading(false);
+    loadRoutes(true);
   }, [loadRoutes]);
 
   // Reconnect sync
@@ -129,8 +141,17 @@ export default function HomePage() {
       {/* Header */}
       <div className="page-header flex items-center justify-between">
         <div>
-          <h1 className="page-title">
+          <h1 className="page-title flex items-center gap-2">
             {profile?.full_name ? `Hey, ${profile.full_name.split(' ')[0]}! 👋` : 'My Routes'}
+            {syncing && (
+              <span className="inline-flex items-center text-xs font-normal text-primary bg-primary/10 px-2 py-0.5 rounded-full gap-1 animate-pulse" id="routes-syncing-badge">
+                <svg className="w-3 h-3 animate-spin text-primary" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Syncing...
+              </span>
+            )}
           </h1>
           <p className="text-sm text-muted mt-1">
             {isGuest
