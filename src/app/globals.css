@@ -288,4 +288,54 @@
     filter: none !important;
     box-shadow: none !important;
   }
+
+  @keyframes reveal {
+    0% {
+      filter: blur(15px);
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    100% {
+      filter: blur(0px);
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes glowPulse {
+    0% {
+      filter: drop-shadow(0 0 15px rgba(26, 86, 219, 0.3)) drop-shadow(0 0 30px rgba(6, 182, 212, 0.15));
+      opacity: 0.6;
+    }
+    100% {
+      filter: drop-shadow(0 0 30px rgba(26, 86, 219, 0.6)) drop-shadow(0 0 60px rgba(6, 182, 212, 0.3));
+      opacity: 0.95;
+    }
+  }
+
+  @keyframes float-particle {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-100px) translateX(20px);
+      opacity: 0;
+    }
+  }
 }
