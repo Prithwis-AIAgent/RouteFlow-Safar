@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import OfflineBanner from '@/components/OfflineBanner';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from '@vercel/analytics/next';
+import SplashScreen from '@/components/SplashScreen';
 
 export const metadata: Metadata = {
   title: 'Safar — Delivery Route Planner',
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <SplashScreen />
         <Navbar />
         <OfflineBanner />
         <main>{children}</main>
