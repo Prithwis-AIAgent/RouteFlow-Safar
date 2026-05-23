@@ -9,6 +9,7 @@ interface AddressSearchProps {
   onChange: (address: string, lat?: number, lng?: number) => void;
   placeholder?: string;
   id?: string;
+  className?: string;
 }
 
 declare global {
@@ -49,7 +50,7 @@ function loadGoogleMaps(): Promise<void> {
   return loadPromise;
 }
 
-export default function AddressSearch({ value, onChange, placeholder = 'Search address...', id }: AddressSearchProps) {
+export default function AddressSearch({ value, onChange, placeholder = 'Search address...', id, className }: AddressSearchProps) {
   const [query, setQuery] = useState(value);
   const [predictions, setPredictions] = useState<PlacePrediction[]>([]);
   const [open, setOpen] = useState(false);
@@ -164,7 +165,7 @@ export default function AddressSearch({ value, onChange, placeholder = 'Search a
         onChange={handleInputChange}
         onFocus={() => predictions.length > 0 && setOpen(true)}
         placeholder={placeholder}
-        className="input-field"
+        className={`input-field ${className || ''}`}
         autoComplete="off"
         aria-autocomplete="list"
         aria-expanded={open}
@@ -173,23 +174,6 @@ export default function AddressSearch({ value, onChange, placeholder = 'Search a
         <div className="absolute right-3 top-1/2 -translate-y-1/2">
           <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
-      )}
-      {query && !loading && (
-        <button
-          type="button"
-          onClick={() => {
-            setQuery('');
-            onChange('');
-            setPredictions([]);
-            setOpen(false);
-          }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-          aria-label="Clear address"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
       )}
       {open && predictions.length > 0 && (
         <ul

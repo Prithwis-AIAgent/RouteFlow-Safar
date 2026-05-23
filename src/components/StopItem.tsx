@@ -38,33 +38,50 @@ export default function StopItem({ stop, index, isLast, onUpdate, onDelete, onAd
       style={style}
       className={`stop-item ${isDragging ? 'shadow-2xl scale-[1.02] ring-2 ring-primary/30' : ''}`}
     >
-      {/* Drag handle */}
-      <button
-        {...attributes}
-        {...listeners}
-        className="drag-handle touch-none"
-        aria-label="Drag to reorder"
-        tabIndex={-1}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-400">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-        </svg>
-      </button>
+      {/* Left side: Drag handle, stop number, START/END badge, and clear button */}
+      <div className="flex flex-col items-center gap-1.5 min-w-[48px] flex-shrink-0">
+        {/* Drag handle */}
+        <button
+          {...attributes}
+          {...listeners}
+          className="drag-handle touch-none text-gray-400"
+          aria-label="Drag to reorder"
+          tabIndex={-1}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+          </svg>
+        </button>
 
-      {/* Stop number badge */}
-      <div className="flex items-center gap-1.5 mt-2.5 flex-shrink-0">
-        <div className={`stop-number ${index === 0 ? '!bg-success' : isLast ? '!bg-danger' : ''} !mt-0`}>
+        {/* Number circle */}
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm flex-shrink-0 ${index === 0 ? 'bg-success' : isLast ? 'bg-danger' : 'bg-primary'}`}>
           {index + 1}
         </div>
+
+        {/* START/END badge */}
         {index === 0 && (
-          <span className="px-1.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40">
-            START
+          <span className="text-[9px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wide">
+            Start
           </span>
         )}
         {isLast && index > 0 && (
-          <span className="px-1.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide bg-rose-100 dark:bg-rose-950/40 text-rose-800 dark:text-rose-400 border border-rose-200 dark:border-rose-800/40">
-            END
+          <span className="text-[9px] font-bold text-red-600 dark:text-red-400 uppercase tracking-wide">
+            End
           </span>
+        )}
+
+        {/* Clear address button - only show if address has text */}
+        {stop.address && (
+          <button
+            type="button"
+            onClick={() => onAddressSelect(stop.id, '')}
+            className="text-gray-400 hover:text-red-500 transition-colors mt-1"
+            aria-label="Clear address"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         )}
       </div>
 
@@ -75,13 +92,14 @@ export default function StopItem({ stop, index, isLast, onUpdate, onDelete, onAd
           value={stop.address}
           onChange={(addr, lat, lng) => onAddressSelect(stop.id, addr, lat, lng)}
           placeholder={index === 0 ? 'Starting point' : `Stop ${index + 1} address`}
+          className="h-12 text-base"
         />
         <input
           type="text"
           value={stop.label}
           onChange={(e) => onUpdate(stop.id, 'label', e.target.value)}
           placeholder={`Label (optional) ${labelPlaceholder}`}
-          className="input-field text-sm"
+          className="input-field h-12 text-base"
         />
         {/* Hidden: address selection with geocode */}
         <span className="sr-only" aria-live="polite">
