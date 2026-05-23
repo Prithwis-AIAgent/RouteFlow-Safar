@@ -31,20 +31,12 @@ export function buildMapsUrl(stops: Stop[]): string {
 
 /**
  * Opens the route URL.
- * On mobile: replaces current location (deep links to Maps app).
- * On desktop: opens new tab.
+ * Always opens in a new tab (forces mobile browsers to open the web version of Google Maps instead of redirecting to the app).
  */
 export function launchRoute(stops: Stop[]): void {
   const url = buildMapsUrl(stops);
   if (!url) return;
 
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  
-  if (isMobile) {
-    // Open in current tab — web Maps will redirect to app after Start is tapped
-    window.location.href = url;
-  } else {
-    // Desktop — open in new tab
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
+  // Open in new tab — forces browser mode and prevents automatic app redirection on mobile
+  window.open(url, '_blank', 'noopener,noreferrer');
 }
