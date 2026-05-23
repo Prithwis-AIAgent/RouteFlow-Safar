@@ -178,7 +178,7 @@ export default function AddressSearch({ value, onChange, placeholder = 'Search a
         <ul
           id={listboxId}
           role="listbox"
-          className="absolute z-50 left-0 right-0 top-full mt-1 bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xl overflow-hidden"
+          className="absolute z-50 left-0 right-0 top-full mt-1 bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-xl overflow-auto max-h-[300px]"
         >
           {predictions.map((pred) => (
             <li
@@ -186,13 +186,13 @@ export default function AddressSearch({ value, onChange, placeholder = 'Search a
               role="option"
               aria-selected={false}
               onClick={() => handleSelect(pred)}
-              className="px-4 py-3 cursor-pointer hover:bg-blue-50 dark:hover:bg-slate-700/60 transition-colors border-b border-gray-50 dark:border-slate-700/40 last:border-0"
+              className="px-4 py-3 cursor-pointer hover:bg-blue-50 dark:hover:bg-slate-700/60 transition-colors border-b border-gray-50 dark:border-slate-700/40 last:border-0 min-h-[60px] flex flex-col justify-center"
             >
-              <p className="text-sm font-medium text-gray-900 dark:text-slate-100 truncate">
+              <p className="text-sm font-medium text-gray-900 dark:text-slate-100 line-clamp-2 leading-tight">
                 {pred.structured_formatting?.main_text ?? pred.description}
               </p>
               {pred.structured_formatting?.secondary_text && (
-                <p className="text-xs text-gray-500 dark:text-slate-400 truncate mt-0.5">
+                <p className="text-xs text-gray-500 dark:text-slate-400 line-clamp-1 mt-1">
                   {pred.structured_formatting.secondary_text}
                 </p>
               )}
