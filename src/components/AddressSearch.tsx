@@ -174,6 +174,23 @@ export default function AddressSearch({ value, onChange, placeholder = 'Search a
           <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       )}
+      {query && !loading && (
+        <button
+          type="button"
+          onClick={() => {
+            setQuery('');
+            onChange('');
+            setPredictions([]);
+            setOpen(false);
+          }}
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+          aria-label="Clear address"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
       {open && predictions.length > 0 && (
         <ul
           id={listboxId}
@@ -192,7 +209,7 @@ export default function AddressSearch({ value, onChange, placeholder = 'Search a
                 {pred.structured_formatting?.main_text ?? pred.description}
               </p>
               {pred.structured_formatting?.secondary_text && (
-                <p className="text-xs text-gray-500 dark:text-slate-400 line-clamp-1 mt-1">
+                <p className="text-xs text-gray-500 dark:text-slate-400 line-clamp-2 mt-1 leading-snug">
                   {pred.structured_formatting.secondary_text}
                 </p>
               )}
