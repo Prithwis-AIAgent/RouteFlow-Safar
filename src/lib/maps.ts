@@ -23,6 +23,9 @@ export function buildMapsUrl(stops: Stop[]): string {
     url += `&waypoints=${waypoints}`;
   }
 
+  // Force browser mode on mobile - prevents auto-redirect to Maps app
+  url += '&force_browser=1';
+
   return url;
 }
 
